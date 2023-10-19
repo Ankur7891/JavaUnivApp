@@ -1,2 +1,2 @@
-# JavaS2P1
-Java IIITK App Project (Mini) - IIITK Y1S2
+# Java University App (Semi-Func w/o DBMS)
+Java IIITK App Project - IIITK (Sem 3)
