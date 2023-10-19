@@ -27,13 +27,13 @@ class Person implements University {
 		this.dob = new DOB(d);
 	}
 	class DOB {
-		private int day;
-		private int month;
-		private int year;
-		DOB (int day, int month, int year) {
-			this.day=day; 
-			this.month=month;
-			this.year=year;
+		private int day = 01;
+		private int month = 01;
+		private int year = 2000;
+		DOB (int day,int month,int year) {
+			this.day = day; 
+			this.month = month;
+			this.year = year;
 		}
 		DOB (String date) {
 			if (date.length()>4) {

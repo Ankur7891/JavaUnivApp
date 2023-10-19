@@ -1,20 +1,19 @@
 package com.iiitk.admin;
 import com.iiitk.*;
-public class  Student extends Person implements University {
-	protected int rollNo;
+public class Student extends Person {
+	protected String rollNo;
 	protected String branch;
 	protected int semester;
-	protected int no_courses;
-	protected float cgpa;
-	
+	protected int no_courses; 
+	protected float cgpa; 
 	public Student() {
-		rollNo = 0;
+		rollNo = "";
 		branch = "";
 		semester = 0;
 		no_courses = 0;
 		cgpa = 0;
 	}
-	public Student (String name,String dob,String eMail,long mobile,int rollNo,String branch,int sem,int nc,float cgpa) {
+	public Student (String name,String dob,String eMail,long mobile,String rollNo,String branch,int sem,int nc,float cgpa) {
 		super(name,dob,eMail,mobile);
 		this.rollNo = rollNo;
 		this.branch = branch;
@@ -22,17 +21,20 @@ public class  Student extends Person implements University {
 		this.no_courses = nc;
 		this.cgpa = cgpa;
 	}
-	public Student (String name,int rollNo,String branch) {
+	public Student (String name,String rollNo,String branch) {
 		this(name,"01-01-2000","",0,rollNo,branch,1,0,0.0f);
 	}
 	public Student(Student s) {
 		this(s.name,s.dob.toString(),s.eMail,s.mobile,s.rollNo,s.branch,s.semester,s.no_courses,s.cgpa);
 	}
+	public String getRollNo() {
+		return this.rollNo;
+	}
 	public int getNoCourses() {
 		return this.no_courses;
 	}
 	public String display() {
-		return super.display()+"\n Roll No."+rollNo+"\n Branch: "+branch+"\n Semester: "+semester+"\n CGPA: "+cgpa;
+		return super.display()+"\n Roll No."+rollNo+"\n Branch: "+branch+"\n Semester: "+semester+"\n Nof. Courses: "+no_courses+"\n CGPA: "+cgpa;
 	}
 	public void readData() {
 		System.out.print("\nEnter Name: "); 
@@ -44,7 +46,7 @@ public class  Student extends Person implements University {
 		System.out.print("Enter Mobile: ");
 		long mobile = Long.parseLong(sc.next());
 		System.out.print("Enter Roll No: ");
-		int roll = Integer.parseInt(sc.next());
+		String roll = sc.next();
 		System.out.print("Enter Branch: ");
 		String branch = sc.next();
 		System.out.print("Enter Semester: ");
@@ -77,7 +79,7 @@ public class  Student extends Person implements University {
 				case 2: System.out.print("Enter New DOB: "); this.setDOB(University.sc.next()); break;
 				case 3: System.out.print("Enter New Email ID: "); this.eMail = University.sc.next(); break;
 				case 4: System.out.print("Enter New Mobile: "); this.mobile = Long.parseLong(University.sc.next()); break;
-				case 5: System.out.print("Enter New Roll Number: "); this.rollNo = Integer.parseInt(University.sc.next()); break;
+				case 5: System.out.print("Enter New Roll Number: "); this.rollNo = University.sc.next(); break;
 				case 6: System.out.print("Enter New Branch: "); this.branch = University.sc.next(); break;
 				case 7: System.out.print("Enter New Semester: "); this.semester = Integer.parseInt(University.sc.next()); break;
 				case 8: System.out.print("Enter New Nof. Courses: "); this.no_courses = Integer.parseInt(University.sc.next()); break;
@@ -85,7 +87,7 @@ public class  Student extends Person implements University {
 				case 10: return null;
 				default: System.out.println("\n\t#-#-# Invalid Choice Entered! #-#-#\n");
 			}
-			System.out.print("\n  Do You Want to Update More Data Fields? (Y/N - Default) : ");
+			System.out.print("\n Q. Do You Want to Update More Data Fields? (Y/N - Default) : ");
 			char c = sc.next().charAt(0);
 			c = Character.toUpperCase(c);
 			if (c == 'Y') {

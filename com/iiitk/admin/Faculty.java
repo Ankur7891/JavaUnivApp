@@ -1,19 +1,19 @@
 package com.iiitk.admin;
 import com.iiitk.*;
-public class Faculty extends Person implements University {
-	private int empcode;
-	private String department;
-	private int experience;
-	private int salary;
-	private int no_courses;
-	Faculty () {
-		empcode=0;
-		department="";
-		experience=0;
-		salary=0;
-		no_courses=0;
+public class Faculty extends Person {
+	protected String empcode;
+	protected String department;
+	protected int experience;
+	protected int salary;
+	protected int no_courses;
+	public Faculty () {
+		empcode = "";
+		department = "";
+		experience = 0;
+		salary = 0;
+		no_courses = 0;
 	}
-	public Faculty (String name,String dob,String eMail,long  mobile,int empcode,String dept,int exp,int sal,int nc) {
+	public Faculty (String name,String dob,String eMail,long  mobile,String empcode,String dept,int exp,int sal,int nc) {
 		super(name,dob,eMail,mobile);
 		this.empcode = empcode;
 		this.department = dept;
@@ -21,7 +21,7 @@ public class Faculty extends Person implements University {
 		this.salary = sal;
 		this.no_courses = nc;
 	}
-	public Faculty (String name,int empcode,String dept) {
+	public Faculty (String name,String empcode,String dept) {
 		this(name,"1-1-1980","",0,empcode,dept,0,0,0);
 	}
 	public Faculty (Faculty f) {
@@ -43,7 +43,7 @@ public class Faculty extends Person implements University {
 		System.out.print("Enter Mobile: ");
 		long mobile = Long.parseLong(sc.next());
 		System.out.print("Enter Emp. Code: ");
-		int emp = Integer.parseInt(sc.next());
+		String emp = University.sc.next();
 		System.out.print("Enter Department: ");
 		String dept = sc.next();
 		System.out.print("Enter Experience: ");
@@ -76,7 +76,7 @@ public class Faculty extends Person implements University {
 				case 2: System.out.print("Enter New DOB: "); this.setDOB(University.sc.next()); break;
 				case 3: System.out.print("Enter New Email ID: "); this.eMail = University.sc.next(); break;
 				case 4: System.out.print("Enter New Mobile: "); this.mobile = Long.parseLong(University.sc.next()); break;
-				case 5: System.out.print("Enter New Emp. Code: "); this.empcode = Integer.parseInt(University.sc.next()); break;
+				case 5: System.out.print("Enter New Emp. Code: "); this.empcode = University.sc.next(); break;
 				case 6: System.out.print("Enter New Department: "); this.department = University.sc.next(); break;
 				case 7: System.out.print("Enter New Experience: "); this.experience = Integer.parseInt(University.sc.next()); break;
 				case 8: System.out.print("Enter New Salary: "); this.salary = Integer.parseInt(University.sc.next()); break;

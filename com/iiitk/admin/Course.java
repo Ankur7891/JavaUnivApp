@@ -1,15 +1,21 @@
 package com.iiitk.admin;
 import com.iiitk.*;
+import com.iiitk.facultyUser.*;
 public class Course implements University {
 	public String code;
 	public String name;
 	public int credits;
 	public int semester;
+	public int nofPeriods = 0;
+	public int[] atd; 
+	public Period[] per;
+	public Marks marks;
 	public Course (String code,String name,int cr,int sem) {
 		this.code = code;
 		this.name = name;
 		this.credits = cr;
 		this.semester = sem;
+		this.marks = new Marks();
 	}
 	public Course () {
 		this.code="";
@@ -18,7 +24,7 @@ public class Course implements University {
 		this.semester=0;
 	}
 	public String display () {
-		return "\n Code: "+code+"\tCredits: "+credits+"\tSem: "+credits+"\tName: "+name+"\n";
+		return "\tCode: "+code+"\t Credits: "+credits+"\tSemester: "+semester+"\tName: "+name+"\n";
 	}
 	public void readData () {
 		System.out.print("\nEnter Course Code: ");
@@ -39,5 +45,15 @@ public class Course implements University {
 			System.out.println("\n *-*-*-*-* Execption Caught! *-*-*-*-* \n");
 		};
 	}
+	public String getStudentAtd() {
+		var f = new java.text.DecimalFormat("###.##");
+		int p = 0;
+		for (int i=0;i<nofPeriods;i++) {
+			if (atd[i] == 1) { 
+				p++;
+			}
+		}
+		double atPc = ((double) p / (double) nofPeriods) * 100;
+		return f.format(atPc).toString();
+	} 
 }
-
